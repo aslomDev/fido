@@ -39,7 +39,7 @@ public class Document {
     @Pattern(regexp = "[a-zA-z.@#$%^&*?().,:;'!]+", flags = Pattern.Flag.CASE_INSENSITIVE, message = "номер не может быть введен")
     private String isxDocument;
 
-    @FutureOrPresent(message = "может быть даты регистрации документа")
+    @FutureOrPresent(message = "не может быть раны даты регистрации документа")
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     private LocalDate isxDocument_date;
 
@@ -72,7 +72,7 @@ public class Document {
     @Column(nullable = false)
     private String description;
 
-    @FutureOrPresent(message = "срок исполнения не может быть даты регистрации документа")
+    @FutureOrPresent(message = "срок исполнения не может быть раны даты регистрации документа")
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     private LocalDate srok_Date_doc;
 
