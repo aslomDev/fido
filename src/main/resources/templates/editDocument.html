@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.springframework.org/schema/data/jaxb">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Редактировать документ</title>
+
+    <!--    <link rel="stylesheet" th:href="@{/static/css/bootstrap.min.css}">-->
+    <link th:rel="stylesheet" th:href="@{https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css}">
+
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="/">Документы</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="/courier">Курер <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/korres">Корреспонденд</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-4 offset-4">
+            <h4>Редактировать документ</h4>
+            <form th:action="@{/update}" id="documentForm" th:object="${oneDocument}" method="post">
+                <input type="text" hidden="hidden" th:field="*{id}">
+
+                <label for="documentName">названя документа</label>
+                <input type="text" class="form-control" id="documentName" name="documentName" th:field="*{documentName}" required placeholder="Названя документа">
+                <span class="text-danger" th:if="${#fields.hasErrors('documentName')}" th:errors="*{documentName}"></span>
+
+                <br/>
+                <label for="isxDocument" class="mt-2">исходящий документа</label>
+                <input type="text" th:filed="*{isxDocument}" class="form-control" id="isxDocument" name="isxDocument" required placeholder="Исходящий документа">
+                <span class="text-danger" th:if="${#fields.hasErrors('isxDocument')}" th:errors="*{isxDocument}"></span>
+
+                <br/>
+
+                <label for="isxDocument_date" class="mt-2">дата исходящий документа</label>
+                <input type="date" class="form-control" th:filed="*{isxDocument_date}" id="isxDocument_date" name="isxDocument_date" placeholder="Дата регистрации исходящий документа">
+                <span class="text-danger" th:if="${#fields.hasErrors('isxDocument_date')}" th:errors="*{isxDocument_date}"></span>
+
+                <br/>
+
+                <label for="courier" class="mt-2">Форма доставки документа</label>
+                <div class="form-group blu-margin">
+                    <select class="form-control" id="courier" th:field="*{courier}" th:required="true">
+                        <option value="" th:required="true">выбрать доставки документа</option>
+                        <option  th:each="operator : ${couriers}"
+                                 th:value="${operator.id}"
+                                 th:text="${operator.courierName}">
+                        </option>
+                    </select>
+
+                </div>
+
+                <br/>
+
+                <label for="courier" class="mt-2">Форма Корреспондент</label>
+                <div class="form-group blu-margin">
+                    <select class="form-control" id="korres" th:field="*{korres}" th:required="true">
+                        <option value="" th:required="true">выбрать корреспондент документа</option>
+                        <option  th:each="operator : ${korress}"
+                                 th:value="${operator.id}"
+                                 th:text="${operator.korName}">
+                        </option>
+                    </select>
+
+                </div>
+
+                <br/>
+
+                <label for="topic" class="mt-2">Тема документа</label>
+                <input type="text" class="form-control" th:filed="*{topic}" id="topic" name="topic" required placeholder="Тема документа">
+                <span class="text-danger" th:if="${#fields.hasErrors('topic')}" th:errors="*{topic}"></span>
+
+                <br/>
+
+                <label for="description" class="mt-2">Описание документа</label>
+                <textarea type="text" rows="3" maxlength="150" class="form-control" th:filed="*{description}" id="description" name="description" required placeholder="Описание документа"></textarea>
+                <span class="text-danger" th:if="${#fields.hasErrors('description')}" th:errors="*{description}"></span>
+
+                <br/>
+
+                <label for="srok_Date_doc" class="mt-2">Срок исполнения документа</label>
+                <input type="date" class="form-control" th:filed="*{srok_Date_doc}" id="srok_Date_doc" name="srok_Date_doc" required placeholder="Срок исполнения документа">
+                <span class="text-danger" th:if="${#fields.hasErrors('srok_Date_doc')}" th:errors="*{srok_Date_doc}"></span>
+
+                <br/>
+
+                <label for="file" class="mt-2">Документ файл</label>
+                <input type="file" class="form-control" id="file" name="file">
+
+                <br/>
+
+                <div class="mt-2" th:if="${message}">
+                    <h2 class="text-danger" th:text="${message}"/>
+                </div>
+
+                <br/>
+
+                <div  class="mt-2" th:if="${issuport}">
+                    <h2 class="text-danger" th:text="${issuport}"/>
+                </div>
+
+                <br/>
+
+                <div  class="mt-2" th:if="${hajm}">
+                    <h2 class="text-danger" th:text="${hajm}"/>
+                </div>
+
+                <button type="submit" class="btn btn-primary">Изменить</button>
+                <td><a class="btn btn-warning" href="/">Закрыть</a></td>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+
+</body>
+</html>

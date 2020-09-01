@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.springframework.org/schema/data/jaxb">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Редактировать rорреспонденд</title>
+
+<!--    <link th:rel="stylesheet" th:href="@{../static/css/lol.css}">-->
+    <link th:rel="stylesheet" th:href="@{https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css}">
+
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="/">Документы</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="/courier">Курер <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/korres">Корреспонденд</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-4 offset-4">
+            <h4>Редактировать корреспонденд</h4>
+            <form th:action="@{/korres/update}" id="korresForm" th:object="${oneKorres}"  method="post">
+
+                <input type="text" hidden="hidden" th:field="*{id}">
+
+
+                <label for="korName">корреспонденд</label>
+                    <input type="text" th:field="*{korName}" class="form-control"  id="korName" name="korName" required placeholder="корреспонденд">
+                    <span class="text-danger" th:if="${#fields.hasErrors('korName')}" th:errors="*{korName}"></span>
+
+                <br/><br/>
+                <button type="submit" class="btn btn-primary">изменить</button>
+                <td><a class="btn btn-warning" href="/korres">Закрыть</a></td>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+
+</body>
+</html>

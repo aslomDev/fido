@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Курер</title>
+
+<!--    <link th:rel="stylesheet" th:href="@{../static/css/bootstrap.min.css}">-->
+    <link th:rel="stylesheet" th:href="@{https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css}">
+
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="/">Документы</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="/courier">Курер <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/korres">Корреспонденд</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <h4>Курер</h4>
+
+            <a href="/courier/add" class="btn btn-primary mb-3">Создать</a>
+            <table class="table table-bordered table-striped table-hover">
+                <thead>
+                <tr>
+                    <th>Курер</th>
+                    <th>E-mail Курер</th>
+                    <th>Телефонограмма</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="courier : ${couriers}">
+                    <td th:text="${courier.getCourierName()}"></td>
+                    <td th:text="${courier.getMail()}"></td>
+                    <td th:text="${courier.getTelefonogramma()}"></td>
+                    <td><a th:href="@{courier/edit/{id}(id=${courier.id})}">Изменить</a></td>
+                    <td><a th:href="@{courier/delete/{id}(id=${courier.id})}">Удалить</a></td>
+
+                </tr>
+                </tbody>
+            </table>
+
+
+        </div>
+    </div>
+</div>
+
+
+
+</body>
+</html>
