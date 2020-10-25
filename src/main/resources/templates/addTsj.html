@@ -3,7 +3,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Корреспонденд</title>
+    <title>Тсж</title>
 
     <link th:rel="stylesheet" th:href="@{https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css}">
 
@@ -23,23 +23,26 @@
             <li class="nav-item">
                 <a class="nav-link" href="/korres">Корреспонденд</a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/tsj">Тсж</a>
+            </li>
         </ul>
     </div>
 </nav>
 <div class="container-fluid">
     <div class="row">
         <div class="col-md-4 offset-4">
-            <h4>Корреспонденд</h4>
-            <form th:action="@{/korres/save}" id="korresForm"   method="post">
+            <h4>Тсж</h4>
+            <form th:action="@{/tsj/save}" id="korresForm"   method="post">
 
-                <label for="korName">корреспонденд</label>
-                <input type="text" class="form-control"  id="korName" name="korName" required placeholder="корреспонденд">
+                <label for="tsjName">Тсж</label>
+                <input type="text" class="form-control"  id="tsjName" name="tsjName" required placeholder="Тсж">
 <!--                <span class="text-danger" th:if="${#fields.hasErrors('korName')}" th:errors="*{korName}"></span>-->
                 <br/>
 
                 <button type="submit" class="btn btn-primary">Сохранить</button>
                 <button onclick="window.print()" class="btn btn-primary">print</button>
-                <td><a class="btn btn-warning" href="/korres">Закрыть</a></td>
+                <td><a class="btn btn-warning" href="/tsj">Закрыть</a></td>
             </form>
 
 

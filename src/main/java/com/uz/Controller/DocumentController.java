@@ -85,13 +85,13 @@ public class DocumentController {
 
     @GetMapping("/add")
     public String addForm(Document document, Model model){
-//        List<Document> documentList = documentRepository.findAll();
+
 //
         List<Courier> courierList = courierRepository.findAll();
         List<Korres> korresList = korresRepository.findAll();
         model.addAttribute("couriers", courierList);
         model.addAttribute("korress", korresList);
-//        model.addAttribute("document", documentList);
+
 
         return "addDocument";
     }
@@ -214,6 +214,16 @@ public class DocumentController {
 
     @GetMapping("/files/{hashId}")
     public ResponseEntity downloadFile(@PathVariable String hashId) throws MalformedURLException {
+        FileUpload file =  fileUploadRepository.findByHashId(hashId);
+        return ResponseEntity.ok()
+                .header(HttpHeaders.CONTENT_DISPOSITION, "inline; filename=\"" + URLEncoder.encode(file.getFileName()) + "\"")
+                .contentType(MediaType.parseMediaType(file.getFileContent()))
+                .contentLength(file.getFileSize())
+                .body(new FileUrlResource(String.format("%s/%s", uploadFolder, file.getFileName())));
+    }
+
+    @GetMapping("/files//veiw/{hashId}")
+    public ResponseEntity viewdFile(@PathVariable String hashId) throws MalformedURLException {
         FileUpload file =  fileUploadRepository.findByHashId(hashId);
         return ResponseEntity.ok()
                 .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + URLEncoder.encode(file.getFileName()) + "\"")

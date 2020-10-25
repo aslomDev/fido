@@ -68,7 +68,7 @@ public class Document {
 
     @NotEmpty(message = "не оставлять места")
     @Size(min = 3, max = 150, message = "название принимается от 3 до 1000")
-    @Pattern(regexp = "[a-zA-z.@#$%^&*?().,:;'!]+", flags = Pattern.Flag.CASE_INSENSITIVE, message = "номер не может быть введен")
+    @Pattern(regexp = "[a-zA-z.%a.%s]+", flags = Pattern.Flag.CASE_INSENSITIVE, message = "номер не может быть введен")
     @Column(nullable = false)
     private String description;
 

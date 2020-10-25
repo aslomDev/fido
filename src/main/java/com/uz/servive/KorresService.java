@@ -25,7 +25,8 @@ public class KorresService {
     }
 
     public List<Korres> getKorres() {
-    List<Korres> korres1 = korresRepository.findAll();
+        String name = "kredit";
+    List<Korres> korres1 = korresRepository.findByKorNameIsNotLike(name);
     return korres1;
     }
 
