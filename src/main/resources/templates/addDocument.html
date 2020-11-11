@@ -24,6 +24,15 @@
             <li class="nav-item">
                 <a class="nav-link" href="/korres">Корреспонденд</a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/gni">ГНИ </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/tsj">Тсж</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/cb">Сб</a>
+            </li>
         </ul>
     </div>
 </nav>
@@ -38,13 +47,13 @@
 
                 <br/>
                 <label for="isxDocument" class="mt-2">исходящий документа</label>
-                <input type="text" th:filed="*{isxDocument}" class="form-control" id="isxDocument" name="isxDocument" required placeholder="Исходящий документа">
+                <input type="text" th:field="*{isxDocument}" class="form-control" id="isxDocument" name="isxDocument" required placeholder="Исходящий документа">
                 <span class="text-danger" th:if="${#fields.hasErrors('isxDocument')}" th:errors="*{isxDocument}"></span>
 
                 <br/>
 
                 <label for="isxDocument_date" class="mt-2">дата исходящий документа</label>
-                <input type="date" class="form-control" th:filed="*{isxDocument_date}" id="isxDocument_date" name="isxDocument_date" placeholder="Дата регистрации исходящий документа">
+                <input type="date" class="form-control" th:field="*{isxDocument_date}" id="isxDocument_date" name="isxDocument_date" placeholder="Дата регистрации исходящий документа">
                 <span class="text-danger" th:if="${#fields.hasErrors('isxDocument_date')}" th:errors="*{isxDocument_date}"></span>
 
                 <br/>
@@ -78,19 +87,19 @@
                 <br/>
 
                 <label for="topic" class="mt-2">Тема документа</label>
-                <input type="text" class="form-control" th:filed="*{topic}" id="topic" name="topic" required placeholder="Тема документа">
+                <input type="text" class="form-control" th:field="*{topic}" id="topic" name="topic" required placeholder="Тема документа">
                 <span class="text-danger" th:if="${#fields.hasErrors('topic')}" th:errors="*{topic}"></span>
 
                 <br/>
 
                 <label for="description" class="mt-2">Описание документа</label>
-                <textarea type="text" rows="3" maxlength="150" class="form-control" th:filed="*{description}" id="description" name="description" required placeholder="Описание документа"></textarea>
+                <textarea type="text" rows="3" maxlength="150" class="form-control" th:field="*{description}" id="description" name="description" required placeholder="Описание документа"></textarea>
                 <span class="text-danger" th:if="${#fields.hasErrors('description')}" th:errors="*{description}"></span>
 
                 <br/>
 
                 <label for="srok_Date_doc" class="mt-2">Срок исполнения документа</label>
-                <input type="date" class="form-control" th:filed="*{srok_Date_doc}" id="srok_Date_doc" name="srok_Date_doc" required placeholder="Срок исполнения документа">
+                <input type="date" class="form-control" th:field="*{srok_Date_doc}" id="srok_Date_doc" name="srok_Date_doc" required placeholder="Срок исполнения документа">
                 <span class="text-danger" th:if="${#fields.hasErrors('srok_Date_doc')}" th:errors="*{srok_Date_doc}"></span>
 
                 <br/>

@@ -21,6 +21,15 @@
             <li class="nav-item">
                 <a class="nav-link" href="/korres">Корреспонденд</a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/gni">ГНИ </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/tsj">Тсж</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/cb">Сб</a>
+            </li>
         </ul>
     </div>
 </nav>
@@ -58,7 +67,8 @@
                     <td th:text="${documents.topic}"></td>
                     <td th:text="${documents.description}"></td>
                     <td th:text="${documents.srok_Date_doc}"></td>
-                    <td><a th:href="@{files/{id}(id=${documents.fileUpload.getHashId()})}">Печать</a></td>
+                    <td><a th:href="@{files/veiw/{id}(id=${documents.fileUpload.getHashId()})}">Открыть</a></td>
+                    <td><a th:href="@{files/{id}(id=${documents.fileUpload.getHashId()})}">скачать файл документы</a></td>
                     <td><a th:href="@{edit/{id}(id=${documents.id})}">Изменить</a></td>
                     <td><a th:href="@{delete/{id}(id=${documents.id})}">Удалить</a></td>
                 </tr>

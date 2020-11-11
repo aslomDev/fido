@@ -11,7 +11,7 @@ public class ZadachaApplication {
     public static void main(String[] args) {
         SpringApplication.run(ZadachaApplication.class, args);
 
-        File dir = new File("C:\\Users\\Aslom\\proekt\\zadacha\\uploadFile");
+        File dir = new File("C:\\Users\\Аслом\\fido\\zadacha\\uploadFile");
         dir.mkdirs();
 
         System.out.println(dir);

@@ -212,7 +212,7 @@ public class DocumentController {
         return "redirect:/";
     }
 
-    @GetMapping("/files/{hashId}")
+    @GetMapping("/files/veiw/{hashId}")
     public ResponseEntity downloadFile(@PathVariable String hashId) throws MalformedURLException {
         FileUpload file =  fileUploadRepository.findByHashId(hashId);
         return ResponseEntity.ok()
@@ -222,7 +222,7 @@ public class DocumentController {
                 .body(new FileUrlResource(String.format("%s/%s", uploadFolder, file.getFileName())));
     }
 
-    @GetMapping("/files//veiw/{hashId}")
+    @GetMapping("/files/{hashId}")
     public ResponseEntity viewdFile(@PathVariable String hashId) throws MalformedURLException {
         FileUpload file =  fileUploadRepository.findByHashId(hashId);
         return ResponseEntity.ok()

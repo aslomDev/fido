@@ -26,7 +26,7 @@ public class Document {
 
     @NotEmpty(message = "не оставлять места")
     @Size(min = 3, max = 50, message = "название принимается от 3 до 50")
-    @Pattern(regexp = "[a-zA-z.@#$%^&*?().,:;'!]+", flags = Pattern.Flag.CASE_INSENSITIVE, message = "номер не может быть введен")
+    @Pattern(regexp = "^[0-9][а-яА-ЯёЁa-zA-Z0-9]+$", flags = Pattern.Flag.CASE_INSENSITIVE, message = "Номер не может состоять только из букв или специальных символов")
     @Column(nullable = false)
     private String documentName;
 
@@ -36,7 +36,7 @@ public class Document {
 
     @NotEmpty(message = "не оставлять места")
     @Size(min = 3, max = 50, message = "название принимается от 3 до 50")
-    @Pattern(regexp = "[a-zA-z.@#$%^&*?().,:;'!]+", flags = Pattern.Flag.CASE_INSENSITIVE, message = "номер не может быть введен")
+    @Pattern(regexp = "^[0-9][а-яА-ЯёЁa-zA-Z0-9]+$", flags = Pattern.Flag.CASE_INSENSITIVE, message = "Номер не может состоять только из букв или специальных символов")
     private String isxDocument;
 
     @FutureOrPresent(message = "не может быть раны даты регистрации документа")
@@ -61,14 +61,12 @@ public class Document {
 
     @NotEmpty(message = "не оставлять места")
     @Size(min = 3, max = 100, message = "название принимается от 3 до 100")
-    @Pattern(regexp = "[a-zA-z.@#$%^&*?().,:;'!]+", flags = Pattern.Flag.CASE_INSENSITIVE, message = "номер не может быть введен")
     @Column(nullable = false)
     private String topic;
 
 
     @NotEmpty(message = "не оставлять места")
     @Size(min = 3, max = 150, message = "название принимается от 3 до 1000")
-    @Pattern(regexp = "[a-zA-z.%a.%s]+", flags = Pattern.Flag.CASE_INSENSITIVE, message = "номер не может быть введен")
     @Column(nullable = false)
     private String description;
 

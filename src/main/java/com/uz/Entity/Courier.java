@@ -7,7 +7,9 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
+import java.util.List;
 
 @Data
 @NoArgsConstructor
@@ -21,6 +23,7 @@ public class Courier {
     private Integer id;
 
     @NotEmpty(message = "не оставлять места")
+    @Pattern(regexp = "^[0-9][а-яА-ЯёЁa-zA-Z0-9]+$", flags = Pattern.Flag.CASE_INSENSITIVE, message = "Номер не может состоять только из букв или специальных символов")
     @Column(nullable = false)
     private String courierName;
 
@@ -32,7 +35,7 @@ public class Courier {
     @Column(nullable = false)
     private String telefonogramma;
 
-//    @OneToMany(mappedBy = "courier", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
-//    private List<Document> documents;
+
+
 
 }
