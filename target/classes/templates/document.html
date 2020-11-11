@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Документы</title>
+    <link th:rel="stylesheet" th:href="@{https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css}">
+<!--    <link rel="stylesheet" th:href="@{/assets/css/bootstrap.min.css}">-->
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="/">Документы</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="/courier">Курер <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/korres">Корреспонденд</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/gni">ГНИ </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/tsj">Тсж</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/cb">Сб</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <h4>Документы</h4>
+            <a href="/add" class="btn btn-info">Создать</a>
+            <table class="table table-bordered table-striped table-hover">
+                <thead>
+                <tr>
+<!--                    <th>Id</th>-->
+                    <th>названя документа</th>
+                    <th>дата регистрации документа</th>
+                    <th>исходящий документа</th>
+                    <th>исходящий документа дата</th>
+                    <th>Форма доставки документа</th>
+                    <th>Форма Корреспондент</th>
+                    <th>Тема документа</th>
+                    <th>Описание документа</th>
+                    <th>Срок исполнения документа</th>
+                    <th>Файл документа</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="documents : ${documents}">
+                    <td th:text="${documents.documentName}"></td>
+                    <td th:text="${documents.regDate}"></td>
+                    <td th:text="${documents.isxDocument}"></td>
+                    <td th:text="${documents.isxDocument_date}"></td>
+                    <td th:text="${documents.courier.courierName}"></td>
+                    <td th:text="${documents.korres.korName}"></td>
+                    <td th:text="${documents.topic}"></td>
+                    <td th:text="${documents.description}"></td>
+                    <td th:text="${documents.srok_Date_doc}"></td>
+                    <td><a th:href="@{files/veiw/{id}(id=${documents.fileUpload.getHashId()})}">Открыть</a></td>
+                    <td><a th:href="@{files/{id}(id=${documents.fileUpload.getHashId()})}">скачать файл документы</a></td>
+                    <td><a th:href="@{edit/{id}(id=${documents.id})}">Изменить</a></td>
+                    <td><a th:href="@{delete/{id}(id=${documents.id})}">Удалить</a></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+</body>
+</html>
